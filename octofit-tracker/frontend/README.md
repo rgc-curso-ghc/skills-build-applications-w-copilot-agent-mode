@@ -13,6 +13,17 @@ VITE_CODESPACE_NAME=your-codespace-name
 The frontend then calls `https://$VITE_CODESPACE_NAME-8000.app.github.dev/api/...`.
 When the variable is unset, it safely falls back to `http://localhost:8000/api/...` for local development.
 
+## Run locally
+
+Start the API in one terminal and the presentation tier in another:
+
+```bash
+npm run dev --prefix octofit-tracker/backend
+npm run dev --prefix octofit-tracker/frontend
+```
+
+The frontend expects the API to be running on port `8000`.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:
