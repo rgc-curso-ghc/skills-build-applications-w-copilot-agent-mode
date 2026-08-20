@@ -10,6 +10,7 @@ const apiBaseUrl = codespaceName
 
 type Resource = Record<string, unknown>;
 
+
 const resources: Record<string, Resource[]> = {
   users: [],
   teams: [],
