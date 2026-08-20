@@ -1,121 +1,57 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { NavLink, Route, Routes } from 'react-router-dom'
+import Activities from './components/Activities.jsx'
+import Leaderboard from './components/Leaderboard.jsx'
+import Teams from './components/Teams.jsx'
+import Users from './components/Users.jsx'
+import Workouts from './components/Workouts.jsx'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const navigation = [
+  { label: 'Overview', path: '/' },
+  { label: 'Activities', path: '/activities' },
+  { label: 'Leaderboard', path: '/leaderboard' },
+  { label: 'Teams', path: '/teams' },
+  { label: 'Users', path: '/users' },
+  { label: 'Workouts', path: '/workouts' },
+]
 
+function Overview() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <section className="overview-page">
+      <div className="eyebrow">OCTOFIT / PERFORMANCE HUB</div>
+      <h1>Make every move count.</h1>
+      <p className="lede">Track the work, rally your team, and keep the leaderboard moving.</p>
+      <div className="overview-grid">
+        <NavLink className="overview-tile tile-coral" to="/activities"><span className="tile-number">01</span><strong>Log activity</strong><span>Turn effort into momentum.</span></NavLink>
+        <NavLink className="overview-tile tile-blue" to="/leaderboard"><span className="tile-number">02</span><strong>See the leaderboard</strong><span>Find your next place to climb.</span></NavLink>
+        <NavLink className="overview-tile tile-lime" to="/workouts"><span className="tile-number">03</span><strong>Choose a workout</strong><span>Start with a plan that fits today.</span></NavLink>
+      </div>
+    </section>
+  )
+}
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+function App() {
+  return (
+    <div className="app-shell">
+      <header className="app-header">
+        <NavLink className="brand" to="/"><span className="brand-mark">O</span><span>OctoFit</span></NavLink>
+        <nav className="main-nav" aria-label="Primary navigation">
+          {navigation.map((item) => <NavLink key={item.path} className={({ isActive }) => (isActive ? 'active' : '')} end={item.path === '/'} to={item.path}>{item.label}</NavLink>)}
+        </nav>
+        <span className="status-dot">API online</span>
+      </header>
+      <main className="app-main">
+        <Routes>
+          <Route element={<Overview />} path="/" />
+          <Route element={<Activities />} path="/activities" />
+          <Route element={<Leaderboard />} path="/leaderboard" />
+          <Route element={<Teams />} path="/teams" />
+          <Route element={<Users />} path="/users" />
+          <Route element={<Workouts />} path="/workouts" />
+        </Routes>
+      </main>
+      <footer className="app-footer">Train together. Go further.</footer>
+    </div>
   )
 }
 
