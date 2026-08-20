@@ -1,8 +1,11 @@
 const codespaceName = import.meta.env.VITE_CODESPACE_NAME?.trim()
+const isLocalBrowser = ['localhost', '127.0.0.1'].includes(window.location.hostname)
 
 export const apiBaseUrl = codespaceName
   ? `https://${codespaceName}-8000.app.github.dev/api`
-  : 'http://localhost:8000/api'
+  : isLocalBrowser
+    ? 'http://localhost:8000/api'
+    : '/api'
 
 export function getItems(payload) {
   if (Array.isArray(payload)) return payload

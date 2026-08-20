@@ -11,7 +11,7 @@ VITE_CODESPACE_NAME=your-codespace-name
 ```
 
 The frontend then calls `https://$VITE_CODESPACE_NAME-8000.app.github.dev/api/...`.
-When the variable is unset, it safely falls back to `http://localhost:8000/api/...` for local development.
+When the variable is unset, a browser opened at localhost uses `http://localhost:8000/api/...`; a Codespaces preview uses the Vite `/api` proxy to reach port `8000`, avoiding `localhost` URL mismatches.
 
 ## Run locally
 
