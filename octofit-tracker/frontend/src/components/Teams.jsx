@@ -5,7 +5,9 @@ import { EmptyState, ResourcePage } from './Activities.jsx'
 function Teams() {
   const [teams, setTeams] = useState([])
   const [error, setError] = useState('')
-  useEffect(() => { fetchItems('teams').then(setTeams).catch((issue) => setError(issue.message)) }, [])
+  useEffect(() => { 
+    // API: https:///workspaces/skills-build-applications-w-copilot-agent-mode-8000.app.github.dev/api/teams
+    fetchItems('teams').then(setTeams).catch((issue) => setError(issue.message)) }, [])
 
   return <ResourcePage title="Teams" kicker="FIND YOUR PEOPLE" error={error}>
     <div className="card-grid">

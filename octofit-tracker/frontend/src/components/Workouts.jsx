@@ -5,7 +5,9 @@ import { EmptyState, ResourcePage } from './Activities.jsx'
 function Workouts() {
   const [workouts, setWorkouts] = useState([])
   const [error, setError] = useState('')
-  useEffect(() => { fetchItems('workouts').then(setWorkouts).catch((issue) => setError(issue.message)) }, [])
+  useEffect(() => { 
+    // API: https:///workspaces/skills-build-applications-w-copilot-agent-mode-8000.app.github.dev/api/workouts
+    fetchItems('workouts').then(setWorkouts).catch((issue) => setError(issue.message)) }, [])
 
   return <ResourcePage title="Workouts" kicker="TODAY'S MENU" error={error}>
     <div className="card-grid">

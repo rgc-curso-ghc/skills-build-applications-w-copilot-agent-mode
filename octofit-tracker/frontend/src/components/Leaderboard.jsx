@@ -5,7 +5,9 @@ import { EmptyState, ResourcePage } from './Activities.jsx'
 function Leaderboard() {
   const [leaders, setLeaders] = useState([])
   const [error, setError] = useState('')
-  useEffect(() => { fetchItems('leaderboard').then(setLeaders).catch((issue) => setError(issue.message)) }, [])
+  useEffect(() => { 
+    // API: https:///workspaces/skills-build-applications-w-copilot-agent-mode-8000.app.github.dev/api/leaderboard
+    fetchItems('leaderboard').then(setLeaders).catch((issue) => setError(issue.message)) }, [])
 
   return <ResourcePage title="Leaderboard" kicker="THE CLIMB" error={error}>
     <div className="leaderboard-list">

@@ -5,7 +5,9 @@ import { EmptyState, ResourcePage } from './Activities.jsx'
 function Users() {
   const [users, setUsers] = useState([])
   const [error, setError] = useState('')
-  useEffect(() => { fetchItems('users').then(setUsers).catch((issue) => setError(issue.message)) }, [])
+  useEffect(() => { 
+    // API: https:///workspaces/skills-build-applications-w-copilot-agent-mode-8000.app.github.dev/api/users
+    fetchItems('users').then(setUsers).catch((issue) => setError(issue.message)) }, [])
 
   return <ResourcePage title="Users" kicker="THE COMMUNITY" error={error}>
     <div className="resource-list">
