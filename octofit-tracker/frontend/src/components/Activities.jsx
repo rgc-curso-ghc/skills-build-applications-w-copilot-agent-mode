@@ -6,8 +6,7 @@ function Activities() {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    // API: https://<your-codespace>-8000.app.github.dev/api/activitiesfetchItems('activities').then(setActivities).catch((issue) => setError(issue.message))  }, [])
-  // ... rest of component
+    // API: https:///workspaces/skills-build-applications-w-copilot-agent-mode-8000.app.github.dev/api/activities  
     fetchItems('activities').then(setActivities).catch((issue) => setError(issue.message))
   }, [])
 
